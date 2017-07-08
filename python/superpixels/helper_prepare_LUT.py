@@ -40,8 +40,8 @@ def set_code_to_block(code, block):
 
 # for i in range(256):
 #    code = padbin(i)
-#    print '\n-------------'
-#    print i,':',code
+#    print('\n-------------')
+#    print(i,':',code)
 #    
 #    set_code_to_block(code,block0)   
 #    set_code_to_block(code,block1)   
@@ -61,13 +61,12 @@ def set_code_to_block(code, block):
 #            if  np.allclose(block0.sum(axis=1),[0,0,3]):
 #                return 1
 #            
-#        print block.astype(np.int)
+#        print(block.astype(np.int))
 #        raise NotImplementedError(i)
 #    
-#    print block0.astype(np.int)
-#    print
+#    print(block0.astype(np.int))
 #    ncc=find_ncc(block0)
-#    print 'ncc =',ncc
+#    print('ncc =',ncc)
 #    
 
 def check_code(code):
@@ -186,24 +185,19 @@ def check_num(i, verbose=False):
     code = padbin(i)
     res = check_code(code)
     if verbose:
-        print
-        '\n-------------'
-        print
-        'Simple:', int(res)
-        print
-        i, ':', code
-        print
-        block0
+        print('\n-------------')
+        print('Simple:', int(res))
+        print(i, ':', code)
+        print(block0)
     return res
 
 
 # generate the simple-point checking string    
 L = [i for i in range(256) if check_num(i)]
 cond = '(' + '||  '.join([' \b(num == {0})'.format(x) for x in L]) + ')'
-print
-cond
+print(cond)
 
 vals = ['{0}'.format(int(check_num(i))) for i in range(256)]
 init_c_array = 'bool lut[256] = {' + ','.join(vals) + '};'
-print
-init_c_array
+print(init_c_array)
+

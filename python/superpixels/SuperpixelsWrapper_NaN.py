@@ -86,10 +86,8 @@ class SuperpixelsWrapper(object):
         self.border.gpu2cpu()
         self.border_ini = self.border.cpu.copy()
 
-        print
-        'dimy,dimx=', dimy, dimx
-        print
-        'nSuperpixels =', self.nSuperpixels
+        print('dimy,dimx=', dimy, dimx)
+        print('nSuperpixels =', self.nSuperpixels)
 
     def set_img(self, img):
         """
@@ -112,10 +110,8 @@ class SuperpixelsWrapper(object):
         self.img = CpuGpuArray(arr=img)
         self.img_isNaN = CpuGpuArray(arr=isNaN)
 
-        print
-        'self.img', self.img
-        print
-        'self.img_isNaN', self.img_isNaN
+        print('self.img', self.img)
+        print('self.img_isNaN', self.img_isNaN)
 
         if nChannels == 3:
             rgb_to_lab(img_gpu=self.img.gpu)
@@ -150,18 +146,16 @@ class SuperpixelsWrapper(object):
 
         """
         if verbose:
-            print
-            'start'
+            print('start')
 
         for i in range(nEMIters):
             if verbose:
-                print
-                'iteration', i
-            "M step"
+                print('iteration', i, "M step")
             self._calc_param(img_gpu=self.img.gpu, img_isNaN_gpu=self.img_isNaN.gpu, seg_gpu=self.seg.gpu,
                              sp=self.superpixels,
                              calculate_s_cov=calc_s_cov)
-            "(Hard) E step"
+            if verbose
+                print("(Hard) E step")
             self._calc_seg(img_gpu=self.img.gpu, img_isNaN_gpu=self.img_isNaN.gpu, seg_gpu=self.seg.gpu,
                            border_gpu=self.border.gpu,
                            counts_gpu=self.superpixels.params.counts.gpu,

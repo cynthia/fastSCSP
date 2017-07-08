@@ -29,7 +29,7 @@ def get_init_seg(dimy, dimx, nPixels_in_square_side, use_hex):
 
     if use_hex:
         s = create_string(dimx, dimy, nPixels_in_square_side)
-        #        print s
+        #        print(s)
         fname = os.path.join(dirname_precomputed_hex_inits, s)
         try:
             FilesDirs.raise_if_file_does_not_exist(fname)
