@@ -6,7 +6,7 @@ Author: Oren Freifeld
 Email: freifeld@dam.brown.edu
 """
 import inspect
-from _generic_exceptions import *
+from ._generic_exceptions import *
 _isfile = os.path.isfile
 _isdir = os.path.isdir
 
@@ -68,7 +68,7 @@ class FilesDirs:
             cls.raise_if_dir_does_not_exist(dirname) 
         except DirDoesNotExistError:
             if verbose:
-                print 'mkdir ',dirname 
+                print('mkdir ',dirname)
             os.makedirs(dirname)
             
 

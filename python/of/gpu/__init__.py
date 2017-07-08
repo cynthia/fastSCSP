@@ -1,1 +1,1 @@
-from CpuGpuArray import  CpuGpuArray
+from .CpuGpuArray import  CpuGpuArray

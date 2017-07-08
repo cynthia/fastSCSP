@@ -1,9 +1,9 @@
 import inspect
 import os
 import time
-from _generic_exceptions import *
-from _class_files_dirs import FilesDirs
-from _class_bunch import Bunch
+from ._generic_exceptions import *
+from ._class_files_dirs import FilesDirs
+from ._class_bunch import Bunch
 
  
 def print_me(x):

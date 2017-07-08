@@ -122,8 +122,8 @@ class Superpixels(object):
         params.Sigma_i.cpu[:,1,1].fill((i_std/2)**2) # To account for scale differences between the L,A,B
 
         #calculate the inverse of covariance
-        params.J_i.cpu[:]=map(inv,params.Sigma_i.cpu)
-        params.J_s.cpu[:]=map(inv,params.Sigma_s.cpu)
+        params.J_i.cpu[:]=list(map(inv,params.Sigma_i.cpu))
+        params.J_s.cpu[:]=list(map(inv,params.Sigma_s.cpu))
         
         # calculate the log of the determinant of covriance
         for i in range(nSuperpixels):

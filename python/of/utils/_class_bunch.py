@@ -37,22 +37,19 @@ class Bunch(object):
     def iteritems(self):
         return self.__dict__.iteritems()        
     def itervalues(self):
-        return self.__dict__.itervalues()
+        return self.__dict__.values()
     
 if __name__ == '__main__':
 #    b = Bunch(**{'k1':1,'k2':2})
     d = {'k1':1,'k2':2}
     b = Bunch(k1=2,k2=3)
-    print b     
+    print(b)    
     
     for x in b:
-        print x
-    print 
+        print(x)
     for k,v  in b.items():
-        print 'b.k = ',v   
-    print
+        print('b.k = ',v)  
     for k,v in b.iteritems():
-        print 'b.k = ',v      
-    print
+        print('b.k = ',v)      
     for x in b.itervalues():
-        print x          
+        print(x)          

@@ -67,8 +67,8 @@ def main(img_filename = os.path.join('image','2.jpg'),
                              use_hex = use_hex 
                             )
     toc = time.clock()
-    print 'init time = ', toc-tic
-    print 'nSuperpixels =', sw.nSuperpixels    
+    print('init time = ', toc-tic)
+    print('nSuperpixels =', sw.nSuperpixels) 
     sw.set_img(img) 
     # you can use the same SuperpixelsWrapper object with different imgs and/or, 
     # i_std, s_std, prior_count. 
@@ -80,14 +80,14 @@ def main(img_filename = os.path.join('image','2.jpg'),
 
     # Part 3: Do the superpixel segmentation
 
-    print "Actual works starts now"
+    print("Actual works starts now")
     tic  = time.clock() 
     #actual work
     sw.calc_seg(nEMIters=num_EM_iters, nItersInner=num_inner_iters, calc_s_cov=calc_s_cov, prior_weight=prior_weight)
     # Copy the parameters from gpu to cpu
     sw.gpu2cpu() 
     toc  = time.clock()
-    print 'superpixel calculation time = ',toc-tic
+    print('superpixel calculation time = ',toc-tic)
 
 
 
@@ -99,7 +99,7 @@ def main(img_filename = os.path.join('image','2.jpg'),
     img_num = os.path.split(root_slash_img_num)[1]   
 
     save_path_root = os.path.join(image_direc , 'result')
-    print "I am going to save results into",save_path_root
+    print("I am going to save results into",save_path_root)
     FilesDirs.mkdirs_if_needed(save_path_root)
 
     img_overlaid = sw.get_img_overlaid()   # get the boundary image   
@@ -110,15 +110,15 @@ def main(img_filename = os.path.join('image','2.jpg'),
     fname_res_border = os.path.join(save_path_root, '_'.join([img_num,'n','{0:03}'.format(nPixels_on_side), 'std', '{0:02}'.format(i_std), 'border', grid+'.png']))
     fname_res_cartoon = os.path.join(save_path_root, '_'.join([img_num, 'n','{0:03}'.format(nPixels_on_side), 'std', '{0:02}'.format(i_std), 'mean', grid+'.png']))
 
-    print 'saving',fname_res_border
+    print('saving',fname_res_border)
     misc.imsave(fname_res_border, img_overlaid)
-    print 'saving',fname_res_cartoon
+    print('saving',fname_res_cartoon)
     misc.imsave(fname_res_cartoon, img_cartoon)
 
     #save the resulting parameters to MATLAB .mat file 
     mat_filename = os.path.join(save_path_root#, img_num + '_std_'+str(i_std)+'.mat')
                                               ,'_'.join([img_num,'n','{0:03}'.format(nPixels_on_side), 'std', '{0:02}'.format(i_std)+'.mat']))
-    print 'Saving params to ',mat_filename
+    print('Saving params to ',mat_filename)
     
     pm = sw.superpixels.params    
 

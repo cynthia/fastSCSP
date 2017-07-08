@@ -10,7 +10,7 @@ import numpy as np
 from of.utils import *
 from of.gpu import CpuGpuArray
 from pylab import plt 
-from honeycomb import honeycomb
+from .honeycomb import honeycomb
 
 dirname_of_this_file = os.path.dirname(inspect.getfile(inspect.currentframe()))
 dirname_precomputed_hex_inits = os.path.join(dirname_of_this_file,'precomputed_hex_inits')
@@ -32,7 +32,7 @@ def get_init_seg(dimy,dimx,nPixels_in_square_side,use_hex):
         fname = os.path.join(dirname_precomputed_hex_inits,s)
         try:
             FilesDirs.raise_if_file_does_not_exist(fname)
-            print "Loading",fname
+            print("Loading",fname)
             seg = np.load(fname)
             
             return seg
@@ -47,7 +47,7 @@ def get_init_seg(dimy,dimx,nPixels_in_square_side,use_hex):
         nRows={}, nCols={}, with n = {},
         it will be faster.
         """.format(fname,dimy,dimx,nPixels_in_square_side)
-        print msg
+        print(msg)
         seg = CpuGpuArray.zeros((dimy,dimx),dtype=np.int32)     
 
         # length of each side   
@@ -95,8 +95,8 @@ if __name__ == "__main__":
     seg= get_init_seg(500, 500,17,True)      
 #    seg= get_init_seg(512, 512,50,False)  
     toc = time.clock()
-    print toc-tic 
-    print 'k = ', seg.max()+1
+    print(toc-tic)
+    print('k = ', seg.max()+1)
     plt.figure(1)
     plt.clf()  
     plt.imshow(seg,interpolation="Nearest")

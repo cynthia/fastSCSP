@@ -10,7 +10,7 @@ import numpy as np
 from of.utils import *
 from of.gpu.KernelThinWrapper import KernelThinWrapper
 from of.gpu import CpuGpuArray
-from gpu import dirname_of_cuda_files
+from .gpu import dirname_of_cuda_files
 
 cuda_filename = os.path.join(dirname_of_cuda_files,'update_param.cu')
 FilesDirs.raise_if_file_does_not_exist(cuda_filename)
@@ -64,6 +64,7 @@ class _UpdateParamIter(KernelThinWrapper):
         mu_i_h = sp.gpu_helper.mu_i_helper
         mu_s_h = sp.gpu_helper.mu_s_helper
         log_count = sp.gpu_helper.log_count_helper     
+        threads_per_block = int(threads_per_block)
 
         # Part 3: Actual work
         if calculate_s_cov:

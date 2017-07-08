@@ -8,7 +8,7 @@ Email: liyixin@mit.edu
 import numpy as np
 from of.utils import *
 from of.gpu.KernelThinWrapper import KernelThinWrapper
-from gpu import dirname_of_cuda_files
+from .gpu import dirname_of_cuda_files
 cuda_filename = os.path.join(dirname_of_cuda_files,'rgb_to_lab.cu')
 FilesDirs.raise_if_file_does_not_exist(cuda_filename)
 with open(cuda_filename,'r') as cuda_file:

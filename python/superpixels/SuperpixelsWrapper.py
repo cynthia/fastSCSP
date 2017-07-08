@@ -90,8 +90,8 @@ class SuperpixelsWrapper(object):
         self.border.gpu2cpu()        
         self.border_ini = self.border.cpu.copy() 
         
-        print 'dimy,dimx=',dimy,dimx
-        print 'nSuperpixels =',self.nSuperpixels
+        print('dimy,dimx=',dimy,dimx)
+        print('nSuperpixels =',self.nSuperpixels)
         
 
     def set_img(self,img):   
@@ -144,11 +144,11 @@ class SuperpixelsWrapper(object):
 
         """
         if verbose:
-            print 'start'
+            print('start')
             
         for i in range(nEMIters): 
             if verbose:
-                print 'iteration',i
+                print('iteration',i)
             "M step"
             self._calc_param(img_gpu=self.img.gpu, seg_gpu=self.seg.gpu, 
                             sp=self.superpixels, 

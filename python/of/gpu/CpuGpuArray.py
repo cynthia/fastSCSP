@@ -124,5 +124,5 @@ class CpuGpuArray(object):
    
 
 if __name__ == "__main__":
-    print CpuGpuArray.zeros((3,3))   
-    print CpuGpuArray.ones((3,3))
+    print(CpuGpuArray.zeros((3,3)))  
+    print(CpuGpuArray.ones((3,3)))

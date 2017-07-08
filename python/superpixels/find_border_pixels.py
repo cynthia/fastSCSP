@@ -10,7 +10,7 @@ import numpy as np
 from of.gpu.KernelThinWrapper import KernelThinWrapper
 from pycuda import gpuarray
 
-from gpu import dirname_of_cuda_files
+from .gpu import dirname_of_cuda_files
 
 cuda_filename = os.path.join(dirname_of_cuda_files,'update_seg.cu')
 include_dirs=[dirname_of_cuda_files]

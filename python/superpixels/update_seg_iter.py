@@ -11,7 +11,7 @@ import numpy as np
 from of.utils import *
 from of.gpu.KernelThinWrapper import KernelThinWrapper
 
-from gpu import dirname_of_cuda_files
+from .gpu import dirname_of_cuda_files
 cuda_filename = os.path.join(dirname_of_cuda_files,'update_seg.cu')
 
 
@@ -81,6 +81,7 @@ class _UpdateSegIter(KernelThinWrapper):
             nPts = seg_gpu.shape[0] * seg_gpu.shape[1]        
         
         nBlocks = int(np.ceil(float(nPts) / float(threads_per_block)))               
+        threads_per_block = int(threads_per_block)
 
 
         # Part 3: The actual work       
