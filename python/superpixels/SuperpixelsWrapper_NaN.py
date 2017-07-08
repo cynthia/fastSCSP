@@ -105,7 +105,7 @@ class SuperpixelsWrapper(object):
             img_isNaN_b = np.isnan(img[:, :, 2])
             isNaN = np.logical_or(img_isNaN_r, np.logical_or(img_isNaN_g, img_isNaN_b))
         else:
-            raise NotImplementedError(nChannels)
+            raise NotImplementedError()
 
         self.img = CpuGpuArray(arr=img)
         self.img_isNaN = CpuGpuArray(arr=isNaN)
@@ -154,7 +154,7 @@ class SuperpixelsWrapper(object):
             self._calc_param(img_gpu=self.img.gpu, img_isNaN_gpu=self.img_isNaN.gpu, seg_gpu=self.seg.gpu,
                              sp=self.superpixels,
                              calculate_s_cov=calc_s_cov)
-            if verbose
+            if verbose:
                 print("(Hard) E step")
             self._calc_seg(img_gpu=self.img.gpu, img_isNaN_gpu=self.img_isNaN.gpu, seg_gpu=self.seg.gpu,
                            border_gpu=self.border.gpu,
